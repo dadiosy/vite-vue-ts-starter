@@ -37,6 +37,11 @@ const navbarList = [
     label: 'Particle',
     name: 'Particle',
   },
+  {
+    id: 6,
+    label: 'Test',
+    name: 'Test',
+  },
 ]
 
 export default defineComponent({
