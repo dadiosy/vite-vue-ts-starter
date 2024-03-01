@@ -6,6 +6,17 @@ const count = ref(0)
 function increment() {
   count.value++
 }
+
+const obj = ref({
+  nested: { count: 0 },
+  arr: ['foo', 'bar'],
+})
+
+function mutateDeeply() {
+  // 以下都会按照期望工作
+  obj.value.nested.count++
+  obj.value.arr.push('baz')
+}
 </script>
 
 <template>
@@ -16,4 +27,13 @@ function increment() {
   >
     {{ count }}
   </button>
+  <div>
+    <v-alert
+      title="Alert title"
+      :text="`${obj.nested.count}`"
+      type="success"
+      variant="tonal"
+    ></v-alert>
+    <v-btn @click="mutateDeeply">increase obj</v-btn>
+  </div>
 </template>
